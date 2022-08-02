@@ -1,0 +1,307 @@
+[1mdiff --git a/.vscode/launch.json b/.vscode/launch.json[m
+[1mdeleted file mode 100644[m
+[1mindex 42fe90e..0000000[m
+[1m--- a/.vscode/launch.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,41 +0,0 @@[m
+[31m-{[m
+[31m-    // Use IntelliSense to learn about possible attributes.[m
+[31m-    // Hover to view descriptions of existing attributes.[m
+[31m-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387[m
+[31m-    "version": "0.2.0",[m
+[31m-    "configurations": [[m
+[31m-        {[m
+[31m-            "name": ".NET Core Launch (console)",[m
+[31m-            "type": "coreclr",[m
+[31m-            "request": "launch",[m
+[31m-            "WARNING01": "*********************************************************************************",[m
+[31m-            "WARNING02": "The C# extension was unable to automatically decode projects in the current",[m
+[31m-            "WARNING03": "workspace to create a runnable launch.json file. A template launch.json file has",[m
+[31m-            "WARNING04": "been created as a placeholder.",[m
+[31m-            "WARNING05": "",[m
+[31m-            "WARNING06": "If OmniSharp is currently unable to load your project, you can attempt to resolve",[m
+[31m-            "WARNING07": "this by restoring any missing project dependencies (example: run 'dotnet restore')",[m
+[31m-            "WARNING08": "and by fixing any reported errors from building the projects in your workspace.",[m
+[31m-            "WARNING09": "If this allows OmniSharp to now load your project then --",[m
+[31m-            "WARNING10": "  * Delete this file",[m
+[31m-            "WARNING11": "  * Open the Visual Studio Code command palette (View->Command Palette)",[m
+[31m-            "WARNING12": "  * run the command: '.NET: Generate Assets for Build and Debug'.",[m
+[31m-            "WARNING13": "",[m
+[31m-            "WARNING14": "If your project requires a more complex launch configuration, you may wish to delete",[m
+[31m-            "WARNING15": "this configuration and pick a different template using the 'Add Configuration...'",[m
+[31m-            "WARNING16": "button at the bottom of this file.",[m
+[31m-            "WARNING17": "*********************************************************************************",[m
+[31m-            "preLaunchTask": "build",[m
+[31m-            "program": "${workspaceFolder}/bin/Debug/<insert-target-framework-here>/<insert-project-name-here>.dll",[m
+[31m-            "args": [],[m
+[31m-            "cwd": "${workspaceFolder}",[m
+[31m-            "console": "internalConsole",[m
+[31m-            "stopAtEntry": false[m
+[31m-        },[m
+[31m-        {[m
+[31m-            "name": ".NET Core Attach",[m
+[31m-            "type": "coreclr",[m
+[31m-            "request": "attach"[m
+[31m-        }[m
+[31m-    ][m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/Data/AppDbContext.cs b/Data/AppDbContext.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 2e9b60b..0000000[m
+[1m--- a/Data/AppDbContext.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,15 +0,0 @@[m
+[31m-using Microsoft.EntityFrameWorkCore;[m
+[31m-using PlatformService.Models;[m
+[31m-[m
+[31m-namespace PlatformService.Data[m
+[31m-{[m
+[31m-    public class AppDbContext : DbContext[m
+[31m-    {[m
+[31m-        public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt)[m
+[31m-        {[m
+[31m-[m
+[31m-        }[m
+[31m-[m
+[31m-        public DbSet<Platform> Platforms { get; set; }[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/Data/IPlatformRepo.cs b/Data/IPlatformRepo.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 5deec0b..0000000[m
+[1m--- a/Data/IPlatformRepo.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,12 +0,0 @@[m
+[31m-using System.Collections.Generic;[m
+[31m-using PlatformService.Models;[m
+[31m-[m
+[31m-namespace PlatformService.Data[m
+[31m-{[m
+[31m-    public interface IPlatformRepo[m
+[31m-    {[m
+[31m-        bool SaveChanges();[m
+[31m-[m
+[31m-        IEnumerable<Platform> GetAllPlatforms();[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/Models/Platform.cs b/Models/Platform.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 1fbddb1..0000000[m
+[1m--- a/Models/Platform.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,20 +0,0 @@[m
+[31m-using System.ComponentModel.DataAnnotations;[m
+[31m-[m
+[31m-namespace PlatformService.Models[m
+[31m-{[m
+[31m-    public class Platform[m
+[31m-    {[m
+[31m-        [Key][m
+[31m-        [Required][m
+[31m-        public int Id { get; set; }[m
+[31m-[m
+[31m-        [Required][m
+[31m-        public string Name { get; set; }[m
+[31m-[m
+[31m-        [Required][m
+[31m-        public string Publisher { get; set; }[m
+[31m-[m
+[31m-        [Required][m
+[31m-        public string Cost { get; set; }[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/PlatformService.csproj b/PlatformService.csproj[m
+[1mdeleted file mode 100644[m
+[1mindex f8d0230..0000000[m
+[1m--- a/PlatformService.csproj[m
+[1m+++ /dev/null[m
+[36m@@ -1,20 +0,0 @@[m
+[31m-<Project Sdk="Microsoft.NET.Sdk.Web">[m
+[31m-[m
+[31m-  <PropertyGroup>[m
+[31m-    <TargetFramework>net5.0</TargetFramework>[m
+[31m-  </PropertyGroup>[m
+[31m-[m
+[31m-  <ItemGroup>[m
+[31m-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />[m
+[31m-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.0.8" />[m
+[31m-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />[m
+[31m-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8">[m
+[31m-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>[m
+[31m-      <PrivateAssets>all</PrivateAssets>[m
+[31m-    </PackageReference>[m
+[31m-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.8" />[m
+[31m-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />[m
+[31m-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />[m
+[31m-  </ItemGroup>[m
+[31m-[m
+[31m-</Project>[m
+[1mdiff --git a/Program.cs b/Program.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 10b9f5a..0000000[m
+[1m--- a/Program.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,26 +0,0 @@[m
+[31m-using System;[m
+[31m-using System.Collections.Generic;[m
+[31m-using System.Linq;[m
+[31m-using System.Threading.Tasks;[m
+[31m-using Microsoft.AspNetCore.Hosting;[m
+[31m-using Microsoft.Extensions.Configuration;[m
+[31m-using Microsoft.Extensions.Hosting;[m
+[31m-using Microsoft.Extensions.Logging;[m
+[31m-[m
+[31m-namespace PlatformService[m
+[31m-{[m
+[31m-    public class Program[m
+[31m-    {[m
+[31m-        public static void Main(string[] args)[m
+[31m-        {[m
+[31m-            CreateHostBuilder(args).Build().Run();[m
+[31m-        }[m
+[31m-[m
+[31m-        public static IHostBuilder CreateHostBuilder(string[] args) =>[m
+[31m-            Host.CreateDefaultBuilder(args)[m
+[31m-                .ConfigureWebHostDefaults(webBuilder =>[m
+[31m-                {[m
+[31m-                    webBuilder.UseStartup<Startup>();[m
+[31m-                });[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/Properties/launchSettings.json b/Properties/launchSettings.json[m
+[1mdeleted file mode 100644[m
+[1mindex aa0601d..0000000[m
+[1m--- a/Properties/launchSettings.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,31 +0,0 @@[m
+[31m-﻿{[m
+[31m-  "$schema": "http://json.schemastore.org/launchsettings.json",[m
+[31m-  "iisSettings": {[m
+[31m-    "windowsAuthentication": false,[m
+[31m-    "anonymousAuthentication": true,[m
+[31m-    "iisExpress": {[m
+[31m-      "applicationUrl": "http://localhost:61088",[m
+[31m-      "sslPort": 44357[m
+[31m-    }[m
+[31m-  },[m
+[31m-  "profiles": {[m
+[31m-    "IIS Express": {[m
+[31m-      "commandName": "IISExpress",[m
+[31m-      "launchBrowser": true,[m
+[31m-      "launchUrl": "swagger",[m
+[31m-      "environmentVariables": {[m
+[31m-        "ASPNETCORE_ENVIRONMENT": "Development"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "PlatformService": {[m
+[31m-      "commandName": "Project",[m
+[31m-      "dotnetRunMessages": "true",[m
+[31m-      "launchBrowser": true,[m
+[31m-      "launchUrl": "swagger",[m
+[31m-      "applicationUrl": "https://localhost:5001;http://localhost:5000",[m
+[31m-      "environmentVariables": {[m
+[31m-        "ASPNETCORE_ENVIRONMENT": "Development"[m
+[31m-      }[m
+[31m-    }[m
+[31m-  }[m
+[31m-}[m
+[1mdiff --git a/Startup.cs b/Startup.cs[m
+[1mdeleted file mode 100644[m
+[1mindex c74e710..0000000[m
+[1m--- a/Startup.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,59 +0,0 @@[m
+[31m-using System;[m
+[31m-using System.Collections.Generic;[m
+[31m-using System.Linq;[m
+[31m-using System.Threading.Tasks;[m
+[31m-using Microsoft.AspNetCore.Builder;[m
+[31m-using Microsoft.AspNetCore.Hosting;[m
+[31m-using Microsoft.AspNetCore.HttpsPolicy;[m
+[31m-using Microsoft.AspNetCore.Mvc;[m
+[31m-using Microsoft.Extensions.Configuration;[m
+[31m-using Microsoft.Extensions.DependencyInjection;[m
+[31m-using Microsoft.Extensions.Hosting;[m
+[31m-using Microsoft.Extensions.Logging;[m
+[31m-using Microsoft.OpenApi.Models;[m
+[31m-using Microsoft.EntityFrameworkCore;[m
+[31m-[m
+[31m-namespace PlatformService[m
+[31m-{[m
+[31m-    public class Startup[m
+[31m-    {[m
+[31m-        public Startup(IConfiguration configuration)[m
+[31m-        {[m
+[31m-            Configuration = configuration;[m
+[31m-        }[m
+[31m-[m
+[31m-        public IConfiguration Configuration { get; }[m
+[31m-[m
+[31m-        public void ConfigureServices(IServiceCollection services)[m
+[31m-        {[m
+[31m-            services.AddDbContext<AppDbContext>(opt => [m
+[31m-                opt.UseInMemoryDatabase("InMem"))[m
+[31m-            services.AddControllers();[m
+[31m-            services.AddSwaggerGen(c =>[m
+[31m-            {[m
+[31m-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlatformService", Version = "v1" });[m
+[31m-            });[m
+[31m-        }[m
+[31m-[m
+[31m-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)[m
+[31m-        {[m
+[31m-            if (env.IsDevelopment())[m
+[31m-            {[m
+[31m-                app.UseDeveloperExceptionPage();[m
+[31m-                app.UseSwagger();[m
+[31m-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1"));[m
+[31m-            }[m
+[31m-[m
+[31m-            app.UseHttpsRedirection();[m
+[31m-[m
+[31m-            app.UseRouting();[m
+[31m-[m
+[31m-            app.UseAuthorization();[m
+[31m-[m
+[31m-            app.UseEndpoints(endpoints =>[m
+[31m-            {[m
+[31m-                endpoints.MapControllers();[m
+[31m-            });[m
+[31m-        }[m
+[31m-    }[m
+[31m-}[m
+[1mdiff --git a/appsettings.Development.json b/appsettings.Development.json[m
+[1mdeleted file mode 100644[m
+[1mindex 8983e0f..0000000[m
+[1m--- a/appsettings.Development.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,9 +0,0 @@[m
+[31m-{[m
+[31m-  "Logging": {[m
+[31m-    "LogLevel": {[m
+[31m-      "Default": "Information",[m
+[31m-      "Microsoft": "Warning",[m
+[31m-      "Microsoft.Hosting.Lifetime": "Information"[m
+[31m-    }[m
+[31m-  }[m
+[31m-}[m
+[1mdiff --git a/appsettings.json b/appsettings.json[m
+[1mdeleted file mode 100644[m
+[1mindex d9d9a9b..0000000[m
+[1m--- a/appsettings.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-{[m
+[31m-  "Logging": {[m
+[31m-    "LogLevel": {[m
+[31m-      "Default": "Information",[m
+[31m-      "Microsoft": "Warning",[m
+[31m-      "Microsoft.Hosting.Lifetime": "Information"[m
+[31m-    }[m
+[31m-  },[m
+[31m-  "AllowedHosts": "*"[m
+[31m-}[m

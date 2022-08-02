@@ -1,7 +1,11 @@
-using Microsoft.EntityFrameWorkCore;
-using PlatformService.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using NewPlatformService.Models;
 
-namespace PlatformService.Data
+namespace NewPlatformService.Data
 {
     public class AppDbContext : DbContext
     {
