@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using NewPlatformService.Dtos;
+using NewPlatformService.Models;
 
 namespace NewPlatformService.Profiles
 {
-    public class PlatformProfile
+    public class PlatformProfile : Profile
     {
-
+        public PlatformProfile()
+        {
+            CreateMap<Platform, PlatformReadDto>();
+            CreateMap<PlatformCreateDto, Platform>();
+        }
     }
 }
